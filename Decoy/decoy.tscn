@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgw7dd55qd01m"]
+[gd_scene load_steps=5 format=3 uid="uid://bgw7dd55qd01m"]
 
 [ext_resource type="Texture2D" uid="uid://b007t4wvpdf4i" path="res://Player/wizzard_m_idle_anim_f0.png" id="1_pulu4"]
+[ext_resource type="Script" path="res://Decoy/decoy.gd" id="2_lps7s"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_qtj0i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bdojf"]
@@ -10,6 +11,7 @@ light_mode = 1
 self_modulate = Color(0.0823529, 0.454902, 0.529412, 0.854902)
 material = SubResource("CanvasItemMaterial_bdojf")
 texture = ExtResource("1_pulu4")
+script = ExtResource("2_lps7s")
 
 [node name="Glow" parent="." instance=ExtResource("2_qtj0i")]
 radius = 32.0

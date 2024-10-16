@@ -5,7 +5,6 @@ var dust_scene = preload("res://Dust/dust.tscn")
 var decoy_scene = preload("res://Decoy/decoy.tscn")
 
 @onready var tilemap = $TileMapLayer as TileMapLayer
-@onready var player_initial_position = $Wizards/Player.position
 
 var has_light: Dictionary = {}
 
@@ -47,7 +46,6 @@ func _process(delta: float) -> void:
 		var decoy = decoy_scene.instantiate()
 		decoy.position = $Wizards/Player.position
 		$Wizards.add_child(decoy)
-		$Wizards/Player.position = player_initial_position
 		
 	
 	pass

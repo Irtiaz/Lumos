@@ -18,7 +18,7 @@ func makepath() -> void:
 		if winner_pos == null or dist < winner_dist:
 			winner_pos = wizard.position
 			winner_dist = dist
-	#nav_agent.target_position = winner_pos
+	nav_agent.target_position = winner_pos
 
 func _ready() -> void:
 	#nav_agent.target_position = player.get_node('CollisionShape2D').global_position
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	if !is_awake:
 		return
 	#nav_agent.target_position = player.get_node('CollisionShape2D').global_position
-	makepath()
+	
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	#if nav_agent.distance_to_target() < 5:
@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !is_awake:
 		return
+	makepath()
 	var dir = to_local(nav_agent.get_next_path_position()) - to_local($CollisionShape2D.global_position)
 	velocity = dir.normalized() * SPEED * delta
 	move_and_slide()
@@ -47,10 +48,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_awake = true
+	print("Hello")
 	show()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	hide()
+	pass
 
 func reset() -> void:
 	#queue_free()
@@ -60,3 +63,4 @@ func reset() -> void:
 
 func _on_death_area_area_entered(area: Area2D) -> void:
 	reset()
+	pass
