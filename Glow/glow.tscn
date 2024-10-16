@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6t1qgwokwuvt"]
+[gd_scene load_steps=4 format=3 uid="uid://c6t1qgwokwuvt"]
 
 [ext_resource type="Texture2D" uid="uid://cwy0tew38otod" path="res://Glow/light.png" id="1_fld5t"]
 [ext_resource type="Script" path="res://Glow/glow.gd" id="2_i2c7i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7axo"]
 
 [node name="Glow" type="PointLight2D"]
 color = Color(0.684687, 0.687422, 0.141667, 1)
@@ -9,3 +11,9 @@ energy = 4.05
 blend_mode = 2
 texture = ExtResource("1_fld5t")
 script = ExtResource("2_i2c7i")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j7axo")

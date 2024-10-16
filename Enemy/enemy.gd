@@ -11,6 +11,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	nav_agent.target_position = player.global_position
 	$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+	if nav_agent.distance_to_target() < 5:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()) - to_local($CollisionShape2D.global_position)
