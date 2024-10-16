@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3nukcd1m5t47"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_5uirj"]
+[ext_resource type="Texture2D" uid="uid://b007t4wvpdf4i" path="res://Player/wizzard_m_idle_anim_f0.png" id="3_nxkfk"]
+[ext_resource type="Texture2D" uid="uid://ci5qeccy57kqp" path="res://light.png" id="3_qa418"]
+[ext_resource type="Texture2D" uid="uid://j5op0npnrh8e" path="res://Player/wizzard_m_idle_anim_f1.png" id="4_lwqbk"]
+[ext_resource type="Texture2D" uid="uid://0rmoilgkdju5" path="res://Player/wizzard_m_idle_anim_f2.png" id="5_hknh5"]
+[ext_resource type="Texture2D" uid="uid://d2fo1pygaikie" path="res://Player/wizzard_m_idle_anim_f3.png" id="6_o7koe"]
+[ext_resource type="Texture2D" uid="uid://clw8jdtl8hamj" path="res://Player/wizzard_m_run_anim_f0.png" id="7_wnyr3"]
+[ext_resource type="Texture2D" uid="uid://c8igqnrdr7fsv" path="res://Player/wizzard_m_run_anim_f1.png" id="8_cdpek"]
+[ext_resource type="Texture2D" uid="uid://dy2s6cxipvrwd" path="res://Player/wizzard_m_run_anim_f2.png" id="9_ruutp"]
+[ext_resource type="Texture2D" uid="uid://b1fy407ouc1n0" path="res://Player/wizzard_m_run_anim_f3.png" id="10_h3pex"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ne76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nxkfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lwqbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hknh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o7koe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wnyr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cdpek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ruutp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h3pex")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2acex"]
+radius = 2.0
+height = 12.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_5uirj")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+shadow_enabled = true
+texture = ExtResource("3_qa418")
+texture_scale = 3.86
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7ne76")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.0120405
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2acex")
