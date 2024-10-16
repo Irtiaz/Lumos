@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjiru881ff32c"]
+
+[ext_resource type="Texture2D" uid="uid://bpa2dk2j48bcd" path="res://Dust/dust 1.png" id="1_yt8de"]
+[ext_resource type="Texture2D" uid="uid://c1mru2bcp6wfb" path="res://Dust/dust 2.png" id="2_gxdys"]
+[ext_resource type="Texture2D" uid="uid://hk0iquoh8pgs" path="res://Dust/dust 3.png" id="3_ptb5e"]
+[ext_resource type="Texture2D" uid="uid://y6bqbqbfdo57" path="res://Dust/dust 4.png" id="4_0e4j3"]
+[ext_resource type="Script" path="res://Dust/dust.gd" id="5_w3cab"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a87fw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gxdys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_yt8de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ptb5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0e4j3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Dust" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_a87fw")
+autoplay = "default"
+script = ExtResource("5_w3cab")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

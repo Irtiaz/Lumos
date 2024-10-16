@@ -1,6 +1,7 @@
 extends Node2D
 
 var skelephotonScene = preload("res://skelephoton/skelephoton.tscn")
+var dust_scene = preload("res://Dust/dust.tscn")
 @onready var tilemap = $TileMapLayer as TileMapLayer
 
 var has_light: Dictionary = {}
@@ -16,12 +17,16 @@ func _process(delta: float) -> void:
 	if !has_light.has(mid_coord):
 		#print(mid_coord)
 		
-		var footstep := Sprite2D.new()
-		footstep.texture = load("res://0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/button_blue_down.png")
-		footstep.position = mid_coord
-		#add_child(footstep)
+		var dust = dust_scene.instantiate()
+		dust.position = mid_coord
+		dust.z_index = -1
+		add_child(dust)
 		
-		has_light[mid_coord] = true
+		has_light[mid_coord] = dust
+	
+	else:
+		has_light[mid_coord].scale = Vector2(1, 1)
+		has_light[mid_coord].get_node("Timer").start()
 	
 	if Input.is_action_just_pressed("spawn_skelephoton"):
 		var cell_coord = tilemap.local_to_map(get_local_mouse_position())
