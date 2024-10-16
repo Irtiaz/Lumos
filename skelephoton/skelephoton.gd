@@ -18,3 +18,8 @@ func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()) - to_local($CollisionShape2D.global_position)
 	velocity = dir.normalized() * SPEED * delta
 	move_and_slide()
+
+
+func _on_consume_area_area_entered(area: Area2D) -> void:
+	print("Should consume")
+	queue_free()

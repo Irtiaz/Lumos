@@ -84,3 +84,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillArea"]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_quox4")
+
+[node name="SkeleEatArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeleEatArea"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_quox4")

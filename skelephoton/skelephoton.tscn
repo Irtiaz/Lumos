@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btu8wo5hfkrsv"]
+[gd_scene load_steps=11 format=3 uid="uid://btu8wo5hfkrsv"]
 
 [ext_resource type="Texture2D" uid="uid://nd5sl8k3y2ta" path="res://skelephoton/skelet_run_anim_f0.png" id="1_ahryr"]
 [ext_resource type="Script" path="res://skelephoton/skelephoton.gd" id="1_wi17e"]
@@ -33,7 +33,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvhlf"]
 radius = 1.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj76c"]
+radius = 4.0
+height = 12.0
+
 [node name="skelephoton" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wi17e")
@@ -52,3 +58,13 @@ shape = SubResource("CircleShape2D_mvhlf")
 [node name="Glow" parent="." instance=ExtResource("5_7fnle")]
 position = Vector2(0, 2)
 radius = 32.0
+
+[node name="ConsumeArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeArea"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_tj76c")
+
+[connection signal="area_entered" from="ConsumeArea" to="." method="_on_consume_area_area_entered"]
