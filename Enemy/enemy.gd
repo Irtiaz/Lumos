@@ -48,16 +48,26 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_awake = true
-	print("Hello")
-	show()
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	hide()
-	pass
+	##show()
+	#light_count += 1
+	#
+	##if light_count >= 1:
+		##show()
+	##else:
+		##hide()
+#
+#func _on_area_2d_area_exited(area: Area2D) -> void:
+	#light_count -= 1
+	#
+	##if light_count >= 1:
+		##show()
+	##else:
+		##hide()
 
 func reset() -> void:
 	#queue_free()
-	hide()
+	#light_count = 0
+	#hide()
 	is_awake = false
 	position = initial_pos
 

@@ -668,7 +668,6 @@ tile_set = SubResource("TileSet_uao26")
 position = Vector2(442, 115)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player", "wizards") instance=ExtResource("3_40dfy")]
-visible = false
 position = Vector2(153, 64)
 SPEED = 3000.0
 player = NodePath("../Wizards/Player")

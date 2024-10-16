@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	if $Glow.radius <= 2:
 		queue_free()
 	else:
-		$Glow.radius -= 10 * delta
+		$Glow.radius -= 7 * delta

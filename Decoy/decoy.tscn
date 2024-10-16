@@ -14,4 +14,5 @@ texture = ExtResource("1_pulu4")
 script = ExtResource("2_lps7s")
 
 [node name="Glow" parent="." instance=ExtResource("2_qtj0i")]
-radius = 32.0
+position = Vector2(1, 7)
+radius = 50.0
