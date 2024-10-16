@@ -57,3 +57,7 @@ move_down={
 [navigation]
 
 2d/default_edge_connection_margin=8.0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
