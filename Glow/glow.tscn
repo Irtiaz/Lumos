@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7axo"]
 
 [node name="Glow" type="PointLight2D"]
-color = Color(0.684687, 0.687422, 0.141667, 1)
+color = Color(0.246947, 0.710792, 0.921118, 1)
 energy = 4.05
 blend_mode = 2
 texture = ExtResource("1_fld5t")

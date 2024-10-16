@@ -30,6 +30,8 @@ animations = [{
 radius = 1.0
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pr8u4")
