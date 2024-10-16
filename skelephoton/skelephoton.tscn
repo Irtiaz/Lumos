@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://btu8wo5hfkrsv"]
+
+[ext_resource type="Texture2D" uid="uid://nd5sl8k3y2ta" path="res://skelephoton/skelet_run_anim_f0.png" id="1_ahryr"]
+[ext_resource type="Script" path="res://skelephoton/skelephoton.gd" id="1_wi17e"]
+[ext_resource type="Texture2D" uid="uid://cqvidf8ixj85t" path="res://skelephoton/skelet_run_anim_f1.png" id="2_8mq2q"]
+[ext_resource type="Texture2D" uid="uid://c3675pldybndv" path="res://skelephoton/skelet_run_anim_f2.png" id="3_qjrsq"]
+[ext_resource type="Texture2D" uid="uid://c4k52ygojcwvd" path="res://skelephoton/skelet_run_anim_f3.png" id="4_w6uaj"]
+[ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="5_7fnle"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w6vqh"]
+light_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6j4s7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ahryr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8mq2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qjrsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w6uaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvhlf"]
+radius = 1.0
+
+[node name="skelephoton" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_wi17e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_w6vqh")
+sprite_frames = SubResource("SpriteFrames_6j4s7")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_mvhlf")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CollisionShape2D"]
+
+[node name="Glow" parent="." instance=ExtResource("5_7fnle")]
+position = Vector2(0, 2)
+radius = 32.0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4k52ygojcwvd"
-path="res://.godot/imported/skelet_run_anim_f3.png-c159816d30fc0246b9fa1e02ce89e740.ctex"
+path="res://.godot/imported/skelet_run_anim_f3.png-ee1edf5ed52e8f71e3a4dd56b674df6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/skelet_run_anim_f3.png"
-dest_files=["res://.godot/imported/skelet_run_anim_f3.png-c159816d30fc0246b9fa1e02ce89e740.ctex"]
+source_file="res://skelephoton/skelet_run_anim_f3.png"
+dest_files=["res://.godot/imported/skelet_run_anim_f3.png-ee1edf5ed52e8f71e3a4dd56b674df6f.ctex"]
 
 [params]
 
