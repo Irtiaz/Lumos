@@ -2,7 +2,10 @@ extends Node2D
 
 var skelephotonScene = preload("res://skelephoton/skelephoton.tscn")
 var dust_scene = preload("res://Dust/dust.tscn")
+var decoy_scene = preload("res://Decoy/decoy.tscn")
+
 @onready var tilemap = $TileMapLayer as TileMapLayer
+@onready var player_initial_position = $Wizards/Player.position
 
 var has_light: Dictionary = {}
 
@@ -13,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var mid_coord = round_to_cell_mid($Player/CollisionShape2D.global_position)
+	var mid_coord = round_to_cell_mid($Wizards/Player/CollisionShape2D.global_position)
 	if !has_light.has(mid_coord):
 		#print(mid_coord)
 		
@@ -35,9 +38,17 @@ func _process(delta: float) -> void:
 		if safe_coord == Vector2i(-1, -1): return
 		
 		var skelephoton = skelephotonScene.instantiate()
-		skelephoton.target = $Player/CollisionShape2D.global_position
+		skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
 		skelephoton.position = tilemap.map_to_local(safe_coord)
 		add_child(skelephoton)
+	
+	
+	elif Input.is_action_just_pressed("suicide"):
+		var decoy = decoy_scene.instantiate()
+		decoy.position = $Wizards/Player.position
+		$Wizards.add_child(decoy)
+		$Wizards/Player.position = player_initial_position
+		
 	
 	pass
 
