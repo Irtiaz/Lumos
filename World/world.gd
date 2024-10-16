@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 		
 		var skelephoton = skelephotonScene.instantiate()
 		skelephoton.player = $Player
+		skelephoton.target = $Player.global_position
 		skelephoton.position = tilemap.map_to_local(safe_coord)
 		add_child(skelephoton)
 	
