@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://djh8gmmh27tqc"]
+[gd_scene load_steps=9 format=3 uid="uid://djh8gmmh27tqc"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_pr8u4"]
 [ext_resource type="Texture2D" uid="uid://g6pe6qa3qdnp" path="res://Enemy/necromancer_anim_f0.png" id="2_ul5g6"]
 [ext_resource type="Texture2D" uid="uid://dt0xjavmfx771" path="res://Enemy/necromancer_anim_f1.png" id="3_632pf"]
 [ext_resource type="Texture2D" uid="uid://bkhdlwq6sqxrc" path="res://Enemy/necromancer_anim_f2.png" id="4_l2qqq"]
 [ext_resource type="Texture2D" uid="uid://qoctfwchbbfs" path="res://Enemy/necromancer_anim_f3.png" id="5_2rchr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jvebk"]
+light_mode = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hoq2r"]
 animations = [{
@@ -36,6 +39,7 @@ script = ExtResource("1_pr8u4")
 SPEED = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_jvebk")
 sprite_frames = SubResource("SpriteFrames_hoq2r")
 autoplay = "default"
 
