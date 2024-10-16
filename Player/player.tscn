@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://d3nukcd1m5t47"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5uirj"]
+[ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ijt84"]
 [ext_resource type="Texture2D" uid="uid://b007t4wvpdf4i" path="res://Player/wizzard_m_idle_anim_f0.png" id="3_nxkfk"]
-[ext_resource type="Texture2D" uid="uid://ci5qeccy57kqp" path="res://light.png" id="3_qa418"]
 [ext_resource type="Texture2D" uid="uid://j5op0npnrh8e" path="res://Player/wizzard_m_idle_anim_f1.png" id="4_lwqbk"]
 [ext_resource type="Texture2D" uid="uid://0rmoilgkdju5" path="res://Player/wizzard_m_idle_anim_f2.png" id="5_hknh5"]
 [ext_resource type="Texture2D" uid="uid://d2fo1pygaikie" path="res://Player/wizzard_m_idle_anim_f3.png" id="6_o7koe"]
@@ -60,12 +60,8 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_5uirj")
 
-[node name="light" type="PointLight2D" parent="."]
-color = Color(0.756982, 0.643493, 0.167489, 1)
-energy = 4.05
-blend_mode = 2
-texture = ExtResource("3_qa418")
-texture_scale = 0.15
+[node name="Glow" parent="." instance=ExtResource("2_ijt84")]
+radius = 32.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_6fmyb")
