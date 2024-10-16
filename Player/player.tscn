@@ -61,7 +61,6 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_5uirj")
 
 [node name="Glow" parent="." instance=ExtResource("2_ijt84")]
-radius = 32.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_6fmyb")
