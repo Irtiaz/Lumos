@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var SPEED: float = 3000
 @export var player: CharacterBody2D
 @onready var nav_agent := $CollisionShape2D.get_node('NavigationAgent2D') as NavigationAgent2D
+@onready var initial_pos = position
 
 var is_awake = false
 
@@ -36,4 +37,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_death_area_area_entered(area: Area2D) -> void:
-	queue_free()
+	#queue_free()
+	hide()
+	is_awake = false
+	position = initial_pos

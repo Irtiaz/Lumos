@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var nav_agent := $CollisionShape2D.get_node('NavigationAgent2D') as NavigationAgent2D
 @export var target: Vector2;
 
+
 func _ready() -> void:
 	nav_agent.target_position = target
 	#nav_agent.target_position = get_global_mouse_position()
@@ -21,5 +22,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_consume_area_area_entered(area: Area2D) -> void:
-	print("Should consume")
 	queue_free()
