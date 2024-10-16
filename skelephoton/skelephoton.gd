@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var SPEED: float = 3000
-@export var player: CharacterBody2D
 @onready var nav_agent := $CollisionShape2D.get_node('NavigationAgent2D') as NavigationAgent2D
 @export var target: Vector2;
 

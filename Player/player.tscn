@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3nukcd1m5t47"]
+[gd_scene load_steps=15 format=3 uid="uid://d3nukcd1m5t47"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5uirj"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ijt84"]
@@ -55,6 +55,9 @@ animations = [{
 radius = 2.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_quox4"]
+radius = 8.0
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -73,3 +76,11 @@ frame_progress = 0.0120405
 position = Vector2(1, 12)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2acex")
+
+[node name="EnemyKillArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillArea"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_quox4")

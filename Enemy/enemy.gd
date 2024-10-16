@@ -7,17 +7,17 @@ extends CharacterBody2D
 var is_awake = false
 
 func _ready() -> void:
-	nav_agent.target_position = player.global_position
+	nav_agent.target_position = player.get_node('CollisionShape2D').global_position
 	#nav_agent.target_position = get_global_mouse_position()
 
 func _process(delta: float) -> void:
 	if !is_awake:
 		return
-	nav_agent.target_position = player.global_position
+	nav_agent.target_position = player.get_node('CollisionShape2D').global_position
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
-	if nav_agent.distance_to_target() < 5:
-		queue_free()
+	#if nav_agent.distance_to_target() < 5:
+		#queue_free()
 
 func _physics_process(delta: float) -> void:
 	if !is_awake:
@@ -33,3 +33,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	hide()
+
+
+func _on_death_area_area_entered(area: Area2D) -> void:
+	queue_free()
