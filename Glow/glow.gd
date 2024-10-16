@@ -3,9 +3,9 @@ extends PointLight2D
 
 @export var radius: float = 100:
 	set(v):
-		texture_scale = v / 298
+		texture_scale = v / 50
 	get:
-		return texture_scale * 298
+		return texture_scale * 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

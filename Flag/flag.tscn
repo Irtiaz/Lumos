@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ne58scybf81e"]
+
+[ext_resource type="Texture2D" uid="uid://0maa60t3wtb4" path="res://Flag/weapon_green_magic_staff.png" id="1_iufa5"]
+[ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ndjfo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bta05"]
+light_mode = 2
+
+[node name="Flag" type="Sprite2D"]
+material = SubResource("CanvasItemMaterial_bta05")
+texture = ExtResource("1_iufa5")
+
+[node name="Glow" parent="." instance=ExtResource("2_ndjfo")]
+position = Vector2(0, -12)
+radius = 25.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dy46pkg1lfi7l"]
+[gd_scene load_steps=9 format=4 uid="uid://dy46pkg1lfi7l"]
 
 [ext_resource type="PackedScene" uid="uid://d3nukcd1m5t47" path="res://Player/player.tscn" id="1_8p6ua"]
 [ext_resource type="Texture2D" uid="uid://b78trcqxv1eru" path="res://0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_y16ua"]
 [ext_resource type="PackedScene" uid="uid://djh8gmmh27tqc" path="res://Enemy/enemy.tscn" id="3_40dfy"]
+[ext_resource type="PackedScene" uid="uid://ne58scybf81e" path="res://Flag/flag.tscn" id="4_2eadh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyju2"]
 light_mode = 2
@@ -667,5 +668,8 @@ SPEED = 3000.0
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_8p6ua")]
-position = Vector2(23, 111)
+position = Vector2(23, 112)
 SPEED = 5000.0
+
+[node name="Flag" parent="." instance=ExtResource("4_2eadh")]
+position = Vector2(442, 115)
