@@ -52,6 +52,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if is_awake: return
 	
 	is_awake = true
+	$AlertSound.play()
 	
 	var animated_sprite := AnimatedSprite2D.new()
 	var sprite_frames := SpriteFrames.new()

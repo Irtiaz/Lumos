@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btu8wo5hfkrsv"]
+[gd_scene load_steps=12 format=3 uid="uid://btu8wo5hfkrsv"]
 
 [ext_resource type="Texture2D" uid="uid://nd5sl8k3y2ta" path="res://skelephoton/skelet_run_anim_f0.png" id="1_ahryr"]
 [ext_resource type="Script" path="res://skelephoton/skelephoton.gd" id="1_wi17e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3675pldybndv" path="res://skelephoton/skelet_run_anim_f2.png" id="3_qjrsq"]
 [ext_resource type="Texture2D" uid="uid://c4k52ygojcwvd" path="res://skelephoton/skelet_run_anim_f3.png" id="4_w6uaj"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="5_7fnle"]
+[ext_resource type="AudioStream" uid="uid://b0yx5m5u02wob" path="res://skelephoton/skeleton_walk.mp3" id="7_pdfr0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w6vqh"]
 light_mode = 1
@@ -67,5 +68,10 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConsumeArea"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_tj76c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_pdfr0")
+volume_db = 15.0
+autoplay = true
 
 [connection signal="area_entered" from="ConsumeArea" to="." method="_on_consume_area_area_entered"]

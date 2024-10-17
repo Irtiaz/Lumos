@@ -53,4 +53,17 @@ func _on_consume_area_area_entered(area: Area2D) -> void:
 	get_parent().add_child(animated_sprite)
 	animated_sprite.play()
 	
+	$AudioStreamPlayer2D.stop()
+	
+	var audio_stream_player = AudioStreamPlayer2D.new()
+	audio_stream_player.stream = load("res://skelephoton/photondeath.mp3")
+	
+	audio_stream_player.connect("finished", func():
+		audio_stream_player.queue_free()
+	)
+	
+	get_parent().get_parent().add_child(audio_stream_player)
+	audio_stream_player.play()
+	
+	
 	queue_free()
