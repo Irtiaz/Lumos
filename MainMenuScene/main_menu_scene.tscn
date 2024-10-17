@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://drv1oupg2yjm1"]
+[gd_scene load_steps=7 format=4 uid="uid://drv1oupg2yjm1"]
 
 [ext_resource type="Script" path="res://MainMenuScene/main_menu_scene.gd" id="1_1uq5b"]
 [ext_resource type="Texture2D" uid="uid://b78trcqxv1eru" path="res://0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_vggto"]
 [ext_resource type="PackedScene" uid="uid://ne58scybf81e" path="res://Flag/flag.tscn" id="2_jiwxt"]
+[ext_resource type="FontFile" uid="uid://3nh4snc06v0s" path="res://ARCADECLASSIC.TTF" id="4_hirgq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eu4rq"]
 texture = ExtResource("1_vggto")
@@ -657,6 +658,7 @@ offset_left = 65.0
 offset_top = 193.0
 offset_right = 106.0
 offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("4_hirgq")
 text = "Play
 "
 

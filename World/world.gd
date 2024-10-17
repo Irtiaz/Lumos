@@ -4,7 +4,6 @@ var skelephotonScene = preload("res://skelephoton/skelephoton.tscn")
 var dust_scene = preload("res://Dust/dust.tscn")
 var decoy_scene = preload("res://Decoy/decoy.tscn")
 
-
 @onready var tilemap = $TileMapLayer as TileMapLayer
 
 var has_light: Dictionary = {}
@@ -16,10 +15,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	if is_nan($Wizards/Player.mana):
-		print("Game over")
-		get_tree().change_scene_to_file("res://MainMenuScene/main_menu_scene.tscn")
+	if is_nan($Wizards/Player.mana) || $Wizards/Player.mana <= 16:
+		$GameOverControls.show()
+		$Wizards/Player.GAME_OVER = true
+		$Wizards/Player.mana = 0
 	
 	var mid_coord = round_to_cell_mid($Wizards/Player/CollisionShape2D.global_position)
 	if !has_light.has(mid_coord):
@@ -35,34 +34,41 @@ func _process(delta: float) -> void:
 	else:
 		has_light[mid_coord].scale = Vector2(1, 1)
 		has_light[mid_coord].get_node("Timer").start()
+		
 	
-	if Input.is_action_just_pressed("spawn_skelephoton"):
-		var cell_coord = tilemap.local_to_map(get_local_mouse_position())
-		var safe_coord = find_nearest_cell(cell_coord)
-		
-		if safe_coord == Vector2i(-1, -1): return
-		
-		if $Wizards/Player.mana > $Wizards/Player.SKELEPHOTON_COST:
-			$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.SKELEPHOTON_COST ** 2)
-			
-			var skelephoton = skelephotonScene.instantiate()
-			skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
-			skelephoton.position = tilemap.map_to_local(safe_coord)
-			add_child(skelephoton)
-			
-		else:
-			print("Not enough mana to spawn skelephoton")
+	if !$Wizards/Player.GAME_OVER:
 	
-	elif Input.is_action_just_pressed("place_decoy"):
-		
-		if $Wizards/Player.mana > $Wizards/Player.DECOY_COST:
-			$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.DECOY_COST ** 2)
+		if Input.is_action_just_pressed("spawn_skelephoton"):
+			var cell_coord = tilemap.local_to_map(get_local_mouse_position())
+			var safe_coord = find_nearest_cell(cell_coord)
 			
-			var decoy = decoy_scene.instantiate()
-			decoy.position = $Wizards/Player.position
-			$Wizards.add_child(decoy)
-		else:
-			print("Not enough mana to palce decoy")
+			if safe_coord == Vector2i(-1, -1): return
+			
+			var next_mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.SKELEPHOTON_COST ** 2)
+			
+			if $Wizards/Player.mana > $Wizards/Player.SKELEPHOTON_COST && next_mana > $Wizards/Player.GAME_OVER_THRESHOLD:
+				$Wizards/Player.mana = next_mana
+				
+				var skelephoton = skelephotonScene.instantiate()
+				skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
+				skelephoton.position = tilemap.map_to_local(safe_coord)
+				add_child(skelephoton)
+				
+			else:
+				print("Not enough mana to spawn skelephoton")
+		
+		elif Input.is_action_just_pressed("place_decoy"):
+			
+			var next_mana =  sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.DECOY_COST ** 2)
+			
+			if $Wizards/Player.mana > $Wizards/Player.DECOY_COST && next_mana > $Wizards/Player.GAME_OVER_THRESHOLD:
+				$Wizards/Player.mana = next_mana
+				
+				var decoy = decoy_scene.instantiate()
+				decoy.position = $Wizards/Player.position
+				$Wizards.add_child(decoy)
+			else:
+				print("Not enough mana to palce decoy")
 		
 	
 	pass
@@ -92,3 +98,7 @@ func find_nearest_cell(cell_coord: Vector2i) -> Vector2i:
 		if is_safe(current_coord): return current_coord
 	return Vector2i(-1, -1)
 	
+
+
+func _on_try_again_button_pressed() -> void:
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)

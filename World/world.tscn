@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dy46pkg1lfi7l"]
+[gd_scene load_steps=11 format=4 uid="uid://dy46pkg1lfi7l"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_5ae7e"]
 [ext_resource type="PackedScene" uid="uid://d3nukcd1m5t47" path="res://Player/player.tscn" id="1_8p6ua"]
 [ext_resource type="Texture2D" uid="uid://b78trcqxv1eru" path="res://0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_y16ua"]
 [ext_resource type="PackedScene" uid="uid://djh8gmmh27tqc" path="res://Enemy/enemy.tscn" id="3_40dfy"]
 [ext_resource type="PackedScene" uid="uid://ne58scybf81e" path="res://Flag/flag.tscn" id="4_2eadh"]
+[ext_resource type="FontFile" uid="uid://3nh4snc06v0s" path="res://ARCADECLASSIC.TTF" id="6_qo1io"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyju2"]
 light_mode = 2
@@ -690,3 +691,26 @@ SKELEPHOTON_COST = 30
 ENEMY_DAMAGE = 40
 DECOY_COST = 45
 mana = 50.0
+
+[node name="GameOverControls" type="Node2D" parent="."]
+visible = false
+
+[node name="GameOverLabel" type="Label" parent="GameOverControls"]
+offset_left = 52.0
+offset_top = -1.0
+offset_right = 445.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.789978, 0.182269, 0.0888819, 1)
+theme_override_fonts/font = ExtResource("6_qo1io")
+theme_override_font_sizes/font_size = 32
+text = "YOU  ARE  ALONE  IN  THE  DARK"
+
+[node name="TryAgainButton" type="Button" parent="GameOverControls"]
+offset_left = 186.0
+offset_top = 26.0
+offset_right = 267.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("6_qo1io")
+text = "Try Again"
+
+[connection signal="pressed" from="GameOverControls/TryAgainButton" to="." method="_on_try_again_button_pressed"]
