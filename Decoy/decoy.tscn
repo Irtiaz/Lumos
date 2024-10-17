@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgw7dd55qd01m"]
+[gd_scene load_steps=7 format=3 uid="uid://bgw7dd55qd01m"]
 
 [ext_resource type="Texture2D" uid="uid://b007t4wvpdf4i" path="res://Player/wizzard_m_idle_anim_f0.png" id="1_pulu4"]
 [ext_resource type="Script" path="res://Decoy/decoy.gd" id="2_lps7s"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_qtj0i"]
+[ext_resource type="AudioStream" uid="uid://b88lrfbd14856" path="res://Decoy/decoy.wav" id="4_bmivb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bdojf"]
 light_mode = 1
@@ -27,3 +28,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 6)
 shape = SubResource("CircleShape2D_4e2ol")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bmivb")
+pitch_scale = 5.0
+autoplay = true

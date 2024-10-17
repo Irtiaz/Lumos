@@ -32,8 +32,19 @@ func _process(delta: float) -> void:
 			animated_sprite.queue_free()
 		)
 		
-		get_parent().add_child(animated_sprite)
+		get_parent().get_parent().add_child(animated_sprite)
 		animated_sprite.play()
+		
+		var audio_stream_player = AudioStreamPlayer2D.new()
+		audio_stream_player.stream = load("res://Decoy/decoy death.mp3")
+		
+		audio_stream_player.connect("finished", func():
+			audio_stream_player.queue_free()
+		)
+		
+		get_parent().get_parent().add_child(audio_stream_player)
+		audio_stream_player.play()
+		
 		
 		queue_free()
 	else:
