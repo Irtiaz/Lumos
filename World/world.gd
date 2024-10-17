@@ -50,8 +50,7 @@ func _process(delta: float) -> void:
 			add_child(skelephoton)
 			
 		else:
-			print("Not enough mana")
-	
+			print("Not enough mana to spawn skelephoton")
 	
 	elif Input.is_action_just_pressed("place_decoy"):
 		

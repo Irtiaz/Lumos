@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var SPEED: float = 3000
 @export var player: CharacterBody2D
 @export var wizards: Node
+
 @onready var nav_agent := $CollisionShape2D.get_node('NavigationAgent2D') as NavigationAgent2D
 @onready var initial_pos = position
 
@@ -68,15 +69,41 @@ func reset() -> void:
 	#queue_free()
 	#light_count = 0
 	#hide()
+	
+	var animated_sprite := AnimatedSprite2D.new()
+	var sprite_frames := SpriteFrames.new()
+	
+	animated_sprite.material = CanvasItemMaterial.new()
+	animated_sprite.material.light_mode = 1
+	animated_sprite.modulate.g = 200
+	
+	sprite_frames.add_animation("vanish")
+	sprite_frames.set_animation_speed("vanish", 5)
+	for i in 8:
+		sprite_frames.add_frame("vanish", load("res://Enemy/vanish" + str(i + 1) + ".png"))
+	
+	sprite_frames.set_animation_loop("vanish", false)	
+	
+	animated_sprite.sprite_frames = sprite_frames
+	animated_sprite.animation = "vanish"
+	
+	animated_sprite.position = Vector2(position) + Vector2(0, 10)
+	
+	animated_sprite.connect("animation_finished", func():
+		animated_sprite.queue_free()
+	)
+	
+	get_parent().add_child(animated_sprite)
+	animated_sprite.play()
+
 	is_awake = false
 	position = initial_pos
+	
 
 
 func _on_player_death_area_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
-	print(player.mana)
 	player.mana = sqrt(player.mana ** 2 - player.ENEMY_DAMAGE ** 2)
-	print(player.mana)
 	
 	reset()
 
