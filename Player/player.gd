@@ -2,6 +2,17 @@ extends CharacterBody2D
 
 # Exported variable to control speed
 @export var SPEED: float = 4000
+@export var SKELEPHOTON_COST := 10
+@export var SKELEPHOTON_GAIN_PERCENTAGE := 0.8
+
+@export var mana: float = 200:
+	set(v):
+		$Glow.radius = v
+	get:
+		return $Glow.radius
+
+func _ready() -> void:
+	$Glow.radius = mana
 
 func _process(delta: float) -> void:
 	if velocity.length() == 0:

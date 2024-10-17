@@ -4,6 +4,7 @@ var skelephotonScene = preload("res://skelephoton/skelephoton.tscn")
 var dust_scene = preload("res://Dust/dust.tscn")
 var decoy_scene = preload("res://Decoy/decoy.tscn")
 
+
 @onready var tilemap = $TileMapLayer as TileMapLayer
 
 var has_light: Dictionary = {}
@@ -35,6 +36,8 @@ func _process(delta: float) -> void:
 		var safe_coord = find_nearest_cell(cell_coord)
 		
 		if safe_coord == Vector2i(-1, -1): return
+		
+		$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.SKELEPHOTON_COST ** 2)
 		
 		var skelephoton = skelephotonScene.instantiate()
 		skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
