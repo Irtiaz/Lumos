@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dy46pkg1lfi7l"]
+[gd_scene load_steps=14 format=4 uid="uid://dy46pkg1lfi7l"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_5ae7e"]
 [ext_resource type="PackedScene" uid="uid://d3nukcd1m5t47" path="res://Player/player.tscn" id="1_8p6ua"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djh8gmmh27tqc" path="res://Enemy/enemy.tscn" id="3_40dfy"]
 [ext_resource type="PackedScene" uid="uid://ne58scybf81e" path="res://Flag/flag.tscn" id="4_2eadh"]
 [ext_resource type="FontFile" uid="uid://3nh4snc06v0s" path="res://ARCADECLASSIC.TTF" id="6_qo1io"]
+[ext_resource type="AudioStream" uid="uid://jdpeu08m8qil" path="res://World/error.mp3" id="7_a330d"]
 [ext_resource type="AudioStream" uid="uid://c82eoigeqjvtx" path="res://World/game over.mp3" id="7_kpoo3"]
 [ext_resource type="AudioStream" uid="uid://doxk8gn5x8vsc" path="res://World/level won.mp3" id="8_msxdu"]
 
@@ -750,6 +751,10 @@ text = "Not  enough    luminance"
 
 [node name="NotEnoughManaDisplayTimer" type="Timer" parent="NotEnoughMana"]
 wait_time = 0.1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="NotEnoughMana"]
+stream = ExtResource("7_a330d")
+volume_db = -20.0
 
 [node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_kpoo3")

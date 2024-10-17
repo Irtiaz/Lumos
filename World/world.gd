@@ -57,6 +57,7 @@ func _process(delta: float) -> void:
 				
 			else:
 				$NotEnoughMana/Label.show()
+				$NotEnoughMana/AudioStreamPlayer2D.play()
 				$NotEnoughMana/Label.self_modulate.a = 1
 				$NotEnoughMana/NotEnoughManaDisplayTimer.start()
 		
@@ -72,6 +73,7 @@ func _process(delta: float) -> void:
 				$Wizards.add_child(decoy)
 			else:
 				$NotEnoughMana/Label.show()
+				$NotEnoughMana/AudioStreamPlayer2D.play()
 				$NotEnoughMana/Label.self_modulate.a = 1
 				$NotEnoughMana/NotEnoughManaDisplayTimer.start()
 		
