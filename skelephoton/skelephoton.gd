@@ -25,4 +25,32 @@ func _on_consume_area_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
 	var gain = player.SKELEPHOTON_COST * player.SKELEPHOTON_GAIN_QUANTILE
 	player.mana = sqrt(player.mana ** 2 + gain ** 2)
+	
+	var animated_sprite := AnimatedSprite2D.new()
+	var sprite_frames := SpriteFrames.new()
+	
+	animated_sprite.material = CanvasItemMaterial.new()
+	animated_sprite.material.light_mode = 1
+	animated_sprite.z_index = 100
+	animated_sprite.scale /= 3
+	
+	sprite_frames.add_animation("shine")
+	sprite_frames.set_animation_speed("shine", 50)
+	for i in 10:
+		sprite_frames.add_frame("shine", load("res://skelephoton/shine" + str(i + 1) + ".png"))
+	
+	sprite_frames.set_animation_loop("shine", false)	
+	
+	animated_sprite.sprite_frames = sprite_frames
+	animated_sprite.animation = "shine"
+	
+	animated_sprite.position = Vector2(position) + Vector2(5, 0)
+	
+	animated_sprite.connect("animation_finished", func():
+		animated_sprite.queue_free()
+	)
+	
+	get_parent().add_child(animated_sprite)
+	animated_sprite.play()
+	
 	queue_free()
