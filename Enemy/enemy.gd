@@ -48,7 +48,39 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	
+	if is_awake: return
+	
 	is_awake = true
+	
+	var animated_sprite := AnimatedSprite2D.new()
+	var sprite_frames := SpriteFrames.new()
+	
+	animated_sprite.material = CanvasItemMaterial.new()
+	animated_sprite.material.light_mode = 1
+	animated_sprite.z_index = 100
+	animated_sprite.scale *= 1
+	
+	sprite_frames.add_animation("alert")
+	sprite_frames.set_animation_speed("alert", 10)
+	for i in 8:
+		sprite_frames.add_frame("alert", load("res://Enemy/alert" + str(i + 1) + ".png"))
+	
+	sprite_frames.set_animation_loop("alert", false)
+	
+	animated_sprite.sprite_frames = sprite_frames
+	animated_sprite.animation = "alert"
+	
+	animated_sprite.position = Vector2(0, 0)
+	
+	animated_sprite.connect("animation_finished", func():
+		print("Done animating alert!")
+		animated_sprite.queue_free()
+	)
+	
+	add_child(animated_sprite)
+	animated_sprite.play()
+	
 	##show()
 	#light_count += 1
 	#
