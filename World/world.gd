@@ -15,7 +15,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if is_nan($Wizards/Player.mana) || $Wizards/Player.mana <= 16:
+	if !$Wizards/Player.FREEZE && (is_nan($Wizards/Player.mana) || $Wizards/Player.mana <= $Wizards/Player.GAME_OVER_THRESHOLD):
+		$GameOverSound.play()
 		$GameOverControls.show()
 		$Wizards/Player.FREEZE = true
 		$Wizards/Player.mana = 0
