@@ -129,12 +129,7 @@ func _on_flag_flag_captured() -> void:
 
 
 func _on_next_level_button_pressed() -> void:
-	var path = get_tree().current_scene.scene_file_path
-	var next_scene
-	if path.find("2") > -1: next_scene = "res://Level3/world.tscn"
-	elif path.find("3") > -1: next_scene = "res://MainMenuScene/main_menu_scene.tscn"
-	else: next_scene = "res://Level2/world.tscn"
-	get_tree().change_scene_to_file(next_scene)
+	get_tree().change_scene_to_file("res://MainMenuScene/main_menu_scene.tscn")
 
 
 func _on_not_enough_mana_display_timer_timeout() -> void:
