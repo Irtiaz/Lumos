@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 	
 	if is_nan($Wizards/Player.mana):
 		print("Game over")
+		get_tree().change_scene_to_file("res://MainMenuScene/main_menu_scene.tscn")
 	
 	var mid_coord = round_to_cell_mid($Wizards/Player/CollisionShape2D.global_position)
 	if !has_light.has(mid_coord):
