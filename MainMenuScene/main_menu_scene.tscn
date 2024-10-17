@@ -651,7 +651,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAE
 tile_set = SubResource("TileSet_ft52x")
 
 [node name="Flag" parent="." instance=ExtResource("2_jiwxt")]
-position = Vector2(216, 85)
+position = Vector2(216, 74)
 
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 152.0

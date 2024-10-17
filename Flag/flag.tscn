@@ -1,14 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://ne58scybf81e"]
+[gd_scene load_steps=9 format=3 uid="uid://ne58scybf81e"]
 
 [ext_resource type="Texture2D" uid="uid://0maa60t3wtb4" path="res://Flag/weapon_green_magic_staff.png" id="1_iufa5"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ndjfo"]
 [ext_resource type="Script" path="res://Flag/flag.gd" id="2_ryg2w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bta05"]
-light_mode = 2
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5omw"]
 size = Vector2(5, 30)
+
+[sub_resource type="Animation" id="Animation_24h3u"]
+resource_name = "hover"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_3gaxm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_634gs"]
+_data = {
+"RESET": SubResource("Animation_3gaxm"),
+"hover": SubResource("Animation_24h3u")
+}
 
 [node name="Flag" type="Sprite2D"]
 material = SubResource("CanvasItemMaterial_bta05")
@@ -25,5 +64,11 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
 shape = SubResource("RectangleShape2D_l5omw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_634gs")
+}
+autoplay = "hover"
 
 [connection signal="area_entered" from="WinArea" to="." method="_on_win_area_area_entered"]
