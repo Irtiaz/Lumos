@@ -53,10 +53,16 @@ func _process(delta: float) -> void:
 			print("Not enough mana")
 	
 	
-	elif Input.is_action_just_pressed("suicide"):
-		var decoy = decoy_scene.instantiate()
-		decoy.position = $Wizards/Player.position
-		$Wizards.add_child(decoy)
+	elif Input.is_action_just_pressed("place_decoy"):
+		
+		if $Wizards/Player.mana > $Wizards/Player.DECOY_COST:
+			$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.DECOY_COST ** 2)
+			
+			var decoy = decoy_scene.instantiate()
+			decoy.position = $Wizards/Player.position
+			$Wizards.add_child(decoy)
+		else:
+			print("Not enough mana to palce decoy")
 		
 	
 	pass

@@ -23,6 +23,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_consume_area_area_entered(area: Area2D) -> void:
 	var player = area.get_parent()
-	var gain = player.SKELEPHOTON_COST * player.SKELEPHOTON_GAIN_PERCENTAGE
+	var gain = player.SKELEPHOTON_COST * player.SKELEPHOTON_GAIN_QUANTILE
 	player.mana = sqrt(player.mana ** 2 + gain ** 2)
 	queue_free()

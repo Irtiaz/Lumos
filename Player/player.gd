@@ -3,8 +3,9 @@ extends CharacterBody2D
 
 @export var SPEED: float = 4000
 @export var SKELEPHOTON_COST := 10
-@export var SKELEPHOTON_GAIN_PERCENTAGE := 0.8
+@export var SKELEPHOTON_GAIN_QUANTILE := 0.8
 @export var ENEMY_DAMAGE := 30
+@export var DECOY_COST := 40
 
 @export var mana: float = 200:
 	set(v):
