@@ -101,4 +101,14 @@ func find_nearest_cell(cell_coord: Vector2i) -> Vector2i:
 
 
 func _on_try_again_button_pressed() -> void:
-	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+	var audio_stream_player = AudioStreamPlayer2D.new()
+	audio_stream_player.stream = load("res://ui interaction.mp3")
+	audio_stream_player.pitch_scale = 4
+	
+	audio_stream_player.connect("finished", func():
+		audio_stream_player.queue_free()
+		get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+	)
+	
+	add_child(audio_stream_player)
+	audio_stream_player.play()
