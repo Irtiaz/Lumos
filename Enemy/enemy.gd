@@ -59,7 +59,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	animated_sprite.material = CanvasItemMaterial.new()
 	animated_sprite.material.light_mode = 1
 	animated_sprite.z_index = 100
-	animated_sprite.scale *= 1
+	animated_sprite.scale *= 1.5
 	
 	sprite_frames.add_animation("alert")
 	sprite_frames.set_animation_speed("alert", 10)
@@ -74,7 +74,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	animated_sprite.position = Vector2(0, 0)
 	
 	animated_sprite.connect("animation_finished", func():
-		print("Done animating alert!")
 		animated_sprite.queue_free()
 	)
 	
