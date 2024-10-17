@@ -709,7 +709,6 @@ position = Vector2(184, 222)
 SPEED = 1500.0
 player = NodePath("../Wizards/Player")
 wizards = NodePath("../Wizards")
-respawn = false
 
 [node name="NotEnoughMana" type="Node" parent="."]
 
