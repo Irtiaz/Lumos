@@ -121,6 +121,7 @@ func _on_try_again_button_pressed() -> void:
 
 func _on_flag_flag_captured() -> void:
 	$LevelCompleteControls.show()
+	$LevelWonSound.play()
 	$Wizards/Player.FREEZE = true
 	$Necromancers.queue_free()
 
