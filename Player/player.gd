@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var SKELEPHOTON_GAIN_QUANTILE := 0.8
 @export var ENEMY_DAMAGE := 30
 @export var DECOY_COST := 40
-@export var GAME_OVER := false
+@export var FREEZE := false
 @export var GAME_OVER_THRESHOLD := 16
 
 @export var mana: float = 200:
@@ -19,7 +19,7 @@ func _ready() -> void:
 	$Glow.radius = mana
 
 func _process(delta: float) -> void:
-	if !GAME_OVER:
+	if !FREEZE:
 		if velocity.length() == 0:
 			$AnimatedSprite2D.play('idle')
 		else:
@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	velocity = Vector2.ZERO
 	
-	if !GAME_OVER:
+	if !FREEZE:
 	# Movement input detection
 		if Input.is_action_pressed("move_left"):
 			velocity.x -= 1

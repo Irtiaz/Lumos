@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_nan($Wizards/Player.mana) || $Wizards/Player.mana <= 16:
 		$GameOverControls.show()
-		$Wizards/Player.GAME_OVER = true
+		$Wizards/Player.FREEZE = true
 		$Wizards/Player.mana = 0
 	
 	var mid_coord = round_to_cell_mid($Wizards/Player/CollisionShape2D.global_position)
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		has_light[mid_coord].get_node("Timer").start()
 		
 	
-	if !$Wizards/Player.GAME_OVER:
+	if !$Wizards/Player.FREEZE:
 	
 		if Input.is_action_just_pressed("spawn_skelephoton"):
 			var cell_coord = tilemap.local_to_map(get_local_mouse_position())
@@ -112,3 +112,13 @@ func _on_try_again_button_pressed() -> void:
 	
 	add_child(audio_stream_player)
 	audio_stream_player.play()
+
+
+func _on_flag_flag_captured() -> void:
+	$LevelCompleteControls.show()
+	$Wizards/Player.FREEZE = true
+	$Necromancers.queue_free()
+
+
+func _on_next_level_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://MainMenuScene/main_menu_scene.tscn")
