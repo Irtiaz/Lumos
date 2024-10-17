@@ -665,7 +665,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAE
 tile_set = SubResource("TileSet_uao26")
 
 [node name="Flag" parent="." instance=ExtResource("4_2eadh")]
-position = Vector2(442, 115)
+position = Vector2(444, 110)
 
 [node name="Necromancers" type="Node" parent="."]
 
@@ -676,7 +676,7 @@ player = NodePath("../../Wizards/Player")
 wizards = NodePath("../../Wizards")
 
 [node name="Enemy2" parent="Necromancers" node_paths=PackedStringArray("player", "wizards") instance=ExtResource("3_40dfy")]
-position = Vector2(441, 160)
+position = Vector2(441, 35)
 SPEED = 3000.0
 player = NodePath("../../Wizards/Player")
 wizards = NodePath("../../Wizards")

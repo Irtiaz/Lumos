@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://ne58scybf81e"]
+[gd_scene load_steps=6 format=3 uid="uid://ne58scybf81e"]
 
 [ext_resource type="Texture2D" uid="uid://0maa60t3wtb4" path="res://Flag/weapon_green_magic_staff.png" id="1_iufa5"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ndjfo"]
+[ext_resource type="Script" path="res://Flag/flag.gd" id="2_ryg2w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bta05"]
 light_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5omw"]
+size = Vector2(5, 30)
+
 [node name="Flag" type="Sprite2D"]
 material = SubResource("CanvasItemMaterial_bta05")
 texture = ExtResource("1_iufa5")
+script = ExtResource("2_ryg2w")
 
 [node name="Glow" parent="." instance=ExtResource("2_ndjfo")]
 position = Vector2(0, -12)
 radius = 25.0
+
+[node name="WinArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("RectangleShape2D_l5omw")
+
+[connection signal="area_entered" from="WinArea" to="." method="_on_win_area_area_entered"]
