@@ -734,6 +734,22 @@ offset_bottom = 57.0
 theme_override_fonts/font = ExtResource("6_qo1io")
 text = "Next Level"
 
+[node name="NotEnoughMana" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="NotEnoughMana"]
+visible = false
+offset_left = 141.0
+offset_top = 236.0
+offset_right = 312.0
+offset_bottom = 259.0
+theme_override_colors/font_color = Color(0.788235, 0.180392, 0.0901961, 1)
+theme_override_fonts/font = ExtResource("6_qo1io")
+text = "Not  enough    luminance"
+
+[node name="NotEnoughManaDisplayTimer" type="Timer" parent="NotEnoughMana"]
+wait_time = 0.1
+
 [connection signal="flag_captured" from="Flag" to="." method="_on_flag_flag_captured"]
 [connection signal="pressed" from="GameOverControls/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="LevelCompleteControls/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="timeout" from="NotEnoughMana/NotEnoughManaDisplayTimer" to="." method="_on_not_enough_mana_display_timer_timeout"]
