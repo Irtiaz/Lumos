@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var SPEED: float = 3000
 @export var player: CharacterBody2D
 @export var wizards: Node
+@export var respawn := true
 
 @onready var nav_agent := $CollisionShape2D.get_node('NavigationAgent2D') as NavigationAgent2D
 @onready var initial_pos = position
@@ -138,9 +139,12 @@ func reset() -> void:
 	
 	get_parent().add_child(audio_stream_player)
 	audio_stream_player.play()
-
-	is_awake = false
-	position = initial_pos
+	
+	if respawn:
+		is_awake = false
+		position = initial_pos
+	else:
+		queue_free()
 	
 
 

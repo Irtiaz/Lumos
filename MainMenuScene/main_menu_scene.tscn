@@ -654,12 +654,21 @@ tile_set = SubResource("TileSet_ft52x")
 position = Vector2(216, 85)
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 65.0
-offset_top = 193.0
-offset_right = 106.0
-offset_bottom = 224.0
+offset_left = 152.0
+offset_top = 192.0
+offset_right = 196.0
+offset_bottom = 223.0
 theme_override_fonts/font = ExtResource("4_hirgq")
 text = "Play
 "
 
+[node name="HelpButton" type="Button" parent="."]
+offset_left = 240.0
+offset_top = 192.0
+offset_right = 284.0
+offset_bottom = 223.0
+theme_override_fonts/font = ExtResource("4_hirgq")
+text = "Help"
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]

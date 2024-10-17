@@ -24,3 +24,17 @@ func _on_play_button_pressed() -> void:
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	
+
+
+func _on_help_button_pressed() -> void:
+	var audio_stream_player = AudioStreamPlayer2D.new()
+	audio_stream_player.stream = load("res://ui interaction.mp3")
+	audio_stream_player.pitch_scale = 4
+	
+	audio_stream_player.connect("finished", func():
+		audio_stream_player.queue_free()
+		get_tree().change_scene_to_file("res://Help/help_1.tscn")
+	)
+	
+	add_child(audio_stream_player)
+	audio_stream_player.play()
