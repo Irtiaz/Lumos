@@ -708,10 +708,10 @@ theme_override_font_sizes/font_size = 32
 text = "YOU  ARE  ALONE  IN  THE  DARK"
 
 [node name="TryAgainButton" type="Button" parent="GameOverControls"]
-offset_left = 186.0
-offset_top = 26.0
-offset_right = 267.0
-offset_bottom = 51.0
+offset_left = 187.0
+offset_top = 109.0
+offset_right = 268.0
+offset_bottom = 134.0
 theme_override_fonts/font = ExtResource("6_qo1io")
 text = "Try Again"
 
@@ -730,9 +730,9 @@ text = "Level Completed"
 
 [node name="NextLevelButton" type="Button" parent="LevelCompleteControls"]
 offset_left = 188.0
-offset_top = 26.0
+offset_top = 102.0
 offset_right = 278.0
-offset_bottom = 57.0
+offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("6_qo1io")
 text = "Next Level"
 

@@ -22,8 +22,10 @@ func _process(delta: float) -> void:
 	if !FREEZE:
 		if velocity.length() == 0:
 			$AnimatedSprite2D.play('idle')
+			$WalkingSound.stop()
 		else:
 			$AnimatedSprite2D.play('run')
+			if !$WalkingSound.playing: $WalkingSound.play()
 			$AnimatedSprite2D.flip_h = velocity.x < 0
 	else:
 		$AnimatedSprite2D.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3nukcd1m5t47"]
+[gd_scene load_steps=16 format=3 uid="uid://d3nukcd1m5t47"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5uirj"]
 [ext_resource type="PackedScene" uid="uid://c6t1qgwokwuvt" path="res://Glow/glow.tscn" id="2_ijt84"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c8igqnrdr7fsv" path="res://Player/wizzard_m_run_anim_f1.png" id="8_cdpek"]
 [ext_resource type="Texture2D" uid="uid://dy2s6cxipvrwd" path="res://Player/wizzard_m_run_anim_f2.png" id="9_ruutp"]
 [ext_resource type="Texture2D" uid="uid://b1fy407ouc1n0" path="res://Player/wizzard_m_run_anim_f3.png" id="10_h3pex"]
+[ext_resource type="AudioStream" uid="uid://qmven1aa0nf8" path="res://Player/walking.mp3" id="11_ny32x"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6fmyb"]
 light_mode = 1
@@ -92,3 +93,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkeleEatArea"]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_quox4")
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ny32x")

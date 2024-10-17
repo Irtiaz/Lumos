@@ -15,6 +15,10 @@ run/main_scene="res://MainMenuScene/main_menu_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BackgroundMusic="*res://BackgroundMusic/background_music.tscn"
+
 [display]
 
 window/size/viewport_width=464
