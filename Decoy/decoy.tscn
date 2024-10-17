@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgw7dd55qd01m"]
+[gd_scene load_steps=6 format=3 uid="uid://bgw7dd55qd01m"]
 
 [ext_resource type="Texture2D" uid="uid://b007t4wvpdf4i" path="res://Player/wizzard_m_idle_anim_f0.png" id="1_pulu4"]
 [ext_resource type="Script" path="res://Decoy/decoy.gd" id="2_lps7s"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bdojf"]
 light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4e2ol"]
+radius = 8.0
 
 [node name="Decoy" type="Sprite2D"]
 self_modulate = Color(0.0823529, 0.454902, 0.529412, 0.854902)
@@ -16,3 +19,11 @@ script = ExtResource("2_lps7s")
 [node name="Glow" parent="." instance=ExtResource("2_qtj0i")]
 position = Vector2(1, 7)
 radius = 50.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 6)
+shape = SubResource("CircleShape2D_4e2ol")

@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-# Exported variable to control speed
+
 @export var SPEED: float = 4000
 @export var SKELEPHOTON_COST := 10
 @export var SKELEPHOTON_GAIN_PERCENTAGE := 0.8
+@export var ENEMY_DAMAGE := 30
 
 @export var mana: float = 200:
 	set(v):

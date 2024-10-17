@@ -16,6 +16,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if is_nan($Wizards/Player.mana):
+		print("Game over")
+	
 	var mid_coord = round_to_cell_mid($Wizards/Player/CollisionShape2D.global_position)
 	if !has_light.has(mid_coord):
 		#print(mid_coord)
@@ -37,12 +41,16 @@ func _process(delta: float) -> void:
 		
 		if safe_coord == Vector2i(-1, -1): return
 		
-		$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.SKELEPHOTON_COST ** 2)
-		
-		var skelephoton = skelephotonScene.instantiate()
-		skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
-		skelephoton.position = tilemap.map_to_local(safe_coord)
-		add_child(skelephoton)
+		if $Wizards/Player.mana > $Wizards/Player.SKELEPHOTON_COST:
+			$Wizards/Player.mana = sqrt($Wizards/Player.mana ** 2 - $Wizards/Player.SKELEPHOTON_COST ** 2)
+			
+			var skelephoton = skelephotonScene.instantiate()
+			skelephoton.target = $Wizards/Player/CollisionShape2D.global_position
+			skelephoton.position = tilemap.map_to_local(safe_coord)
+			add_child(skelephoton)
+			
+		else:
+			print("Not enough mana")
 	
 	
 	elif Input.is_action_just_pressed("suicide"):

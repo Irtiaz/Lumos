@@ -42,8 +42,8 @@ func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()) - to_local($CollisionShape2D.global_position)
 	velocity = dir.normalized() * SPEED * delta
 	move_and_slide()
-	if nav_agent.is_navigation_finished():
-		reset()
+	#if nav_agent.is_navigation_finished():
+		#reset()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -71,6 +71,15 @@ func reset() -> void:
 	is_awake = false
 	position = initial_pos
 
-func _on_death_area_area_entered(area: Area2D) -> void:
+
+func _on_player_death_area_area_entered(area: Area2D) -> void:
+	var player = area.get_parent()
+	print(player.mana)
+	player.mana = sqrt(player.mana ** 2 - player.ENEMY_DAMAGE ** 2)
+	print(player.mana)
+	
 	reset()
-	pass
+
+
+func _on_decoy_death_area_area_entered(area: Area2D) -> void:
+	reset()
