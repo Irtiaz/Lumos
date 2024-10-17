@@ -129,7 +129,7 @@ func _on_flag_flag_captured() -> void:
 
 
 func _on_next_level_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Level2/world.tscn")
+	get_tree().change_scene_to_file("res://MainMenuScene/main_menu_scene.tscn")
 
 
 func _on_not_enough_mana_display_timer_timeout() -> void:

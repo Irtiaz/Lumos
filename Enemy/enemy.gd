@@ -156,4 +156,5 @@ func _on_player_death_area_area_entered(area: Area2D) -> void:
 
 
 func _on_decoy_death_area_area_entered(area: Area2D) -> void:
+	respawn = false
 	reset()
